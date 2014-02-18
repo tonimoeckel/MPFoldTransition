@@ -110,6 +110,8 @@
 	}
 
 	[self setSourceView:src.view];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	if ([src wantsFullScreenLayout] && NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1)
 	{
 		// don't include the status bar height in the rect to fold
@@ -122,6 +124,7 @@
 		frameViewRect.size.height -= statusBarViewRect.size.height;
 		[self setRect:frameViewRect];
 	}
+#pragma clang diagnostic pop
     else
     {
         [self setRect:src.view.bounds];
